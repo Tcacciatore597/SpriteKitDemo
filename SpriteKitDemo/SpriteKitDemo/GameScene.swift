@@ -30,6 +30,15 @@ class GameScene: SKScene {
         blueBox.zPosition = 2
         blueBox.position = CGPoint(x: myFirstSpriteNode.size.width/2, y: myFirstSpriteNode.size.height/2)
         myFirstSpriteNode.addChild(blueBox)
+        
+        physicsWorld.gravity = CGVector(dx: -1.0, dy: -2.0)
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
+        myFirstTexturedSpriteNode.physicsBody = SKPhysicsBody(circleOfRadius: myFirstTexturedSpriteNode.size.width/2)
+        myFirstTexturedSpriteNode.physicsBody!.allowsRotation = false
+        myFirstTexturedSpriteNode.physicsBody!.restitution = 1.0
+        
+        blueBox.physicsBody = SKPhysicsBody(rectangleOf: blueBox.size)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
